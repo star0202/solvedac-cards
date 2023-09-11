@@ -25,19 +25,21 @@ export default class CacheManager {
   ) {
     const hash = sha256(JSON.stringify(data)).toString()
 
-    readFile(join(__dirname, `../../cache/${hash}.svg`))
-      .then(() => {
-        this.logger.info(`Using cache ${hash}`)
+    try {
+      this.logger.info(`Using cache ${hash}`)
 
-        return readFile(join(__dirname, `../../cache/${hash}.svg`), 'utf-8')
-      })
-      .catch(async () => {
-        this.logger.info(`Caching ${hash}`)
+      const svg = await readFile(
+        join(__dirname, `../../cache/${hash}.svg`),
+        'utf-8',
+      )
+      return svg
+    } catch (e) {
+      this.logger.info(`Caching ${hash}`)
 
-        const svg = await generate(data)
-        await this.cache(svg, hash)
+      const svg = await generate(data)
+      await this.cache(svg, hash)
 
-        return svg
-      })
+      return svg
+    }
   }
 }
