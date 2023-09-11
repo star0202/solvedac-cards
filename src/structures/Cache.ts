@@ -13,39 +13,31 @@ export default class CacheManager {
     this.logger = logger.child({ name: 'Cache' })
   }
 
-  async isCached(data: Data) {
-    const hash = sha256(JSON.stringify(data)).toString()
-
-    return readFile(join(__dirname, `../../cache/${hash}.svg`))
-      .then(() => true)
-      .catch(() => false)
-  }
-
-  async cache(data: Data, svg: string) {
-    const hash = sha256(JSON.stringify(data)).toString()
-
+  async cache(svg: string, hash: string) {
     this.logger.info(`Caching ${hash}`)
 
     await appendFile(join(__dirname, `../../cache/${hash}.svg`), svg)
-  }
-
-  async getCache(data: Data) {
-    const hash = sha256(JSON.stringify(data)).toString()
-
-    this.logger.info(`Using cache ${hash}`)
-
-    return await readFile(join(__dirname, `../../cache/${hash}.svg`), 'utf-8')
   }
 
   async generateCachedCard<T extends Data>(
     data: T,
     generate: (data: T) => Promise<string>,
   ) {
-    if (await this.isCached(data)) return await this.getCache(data)
+    const hash = sha256(JSON.stringify(data)).toString()
 
-    const svg = await generate(data)
-    await this.cache(data, svg)
+    readFile(join(__dirname, `../../cache/${hash}.svg`))
+      .then(() => {
+        this.logger.info(`Using cache ${hash}`)
 
-    return svg
+        return readFile(join(__dirname, `../../cache/${hash}.svg`), 'utf-8')
+      })
+      .catch(async () => {
+        this.logger.info(`Caching ${hash}`)
+
+        const svg = await generate(data)
+        await this.cache(svg, hash)
+
+        return svg
+      })
   }
 }
