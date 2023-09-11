@@ -34,8 +34,6 @@ export default class CacheManager {
       )
       return svg
     } catch (e) {
-      this.logger.info(`Caching ${hash}`)
-
       const svg = await generate(data)
       await this.cache(svg, hash)
 
