@@ -2,7 +2,7 @@
 module.exports = {
   apps: [
     {
-      name: 'Discord Profile',
+      name: 'solved.ac Cards',
       script: './dist/index.js',
     },
   ],
