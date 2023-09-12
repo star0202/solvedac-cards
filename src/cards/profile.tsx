@@ -135,7 +135,7 @@ export const profileCard = async (data: User) => {
             height: 10,
             borderRadius: 5,
             marginTop: 5,
-            backgroundColor: '#000000',
+            backgroundColor: '#0b131b',
             width: '100%',
           }}
         >
