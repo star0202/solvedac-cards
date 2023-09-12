@@ -41,8 +41,19 @@ export const profileCard = async (data: User) => {
           <div
             style={{
               display: 'flex',
-              color: tier.color,
               marginLeft: 4,
+              ...(data.tier === 31
+                ? {
+                    background:
+                      'linear-gradient(0deg, #ff7ca8, #b491ff, #7cf9ff)',
+                    WebkitTextFillColor: 'transparent',
+                    WebkitBackgroundClip: 'text',
+                    backgroundClip: 'text',
+                    color: 'transparent',
+                  }
+                : {
+                    color: tier.color,
+                  }),
             }}
           >
             {tier.name}
@@ -53,8 +64,19 @@ export const profileCard = async (data: User) => {
           <div
             style={{
               display: 'flex',
-              color: tier.color,
               marginLeft: 4,
+              ...(data.tier === 31
+                ? {
+                    background:
+                      'linear-gradient(0deg, #ff7ca8, #b491ff, #7cf9ff)',
+                    WebkitTextFillColor: 'transparent',
+                    WebkitBackgroundClip: 'text',
+                    backgroundClip: 'text',
+                    color: 'transparent',
+                  }
+                : {
+                    color: tier.color,
+                  }),
             }}
           >
             {data.rating}
