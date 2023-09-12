@@ -6,13 +6,13 @@ export type User = {
   profileImageUrl: string | null
   solvedCount: number
   voteCount: number
-  tier: TierNumber
+  tier: number
   rating: number
   ratingByProblemsSum: number
   ratingByClass: number
   ratingBySolvedCount: number
   ratingByVoteCount: number
-  class: Class
+  class: number
   classDecoration: 'none' | 'silver' | 'gold'
   rivalCount: number
   reverseRivalCount: number
@@ -25,43 +25,9 @@ export type User = {
   rank: number
 }
 
-export type Class = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
-
-export type TierNumber =
-  | 0
-  | 1
-  | 2
-  | 3
-  | 4
-  | 5
-  | 6
-  | 7
-  | 8
-  | 9
-  | 10
-  | 11
-  | 12
-  | 13
-  | 14
-  | 15
-  | 16
-  | 17
-  | 18
-  | 19
-  | 20
-  | 21
-  | 22
-  | 23
-  | 24
-  | 25
-  | 26
-  | 27
-  | 28
-  | 29
-  | 30
-  | 31
-
 export type Tier = {
   color: string
   name: string
+  rating: number
+  gradient: string
 }
