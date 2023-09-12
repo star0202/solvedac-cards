@@ -2,7 +2,9 @@ import { generate } from '.'
 import { classMapping, tierMapping } from '../constants'
 import type { User } from '../types'
 
-export const profileCard = async (data: User) => {
+export const profileCard = async (params: { data: User; size: number }) => {
+  const { data, size } = params
+
   const tier = tierMapping.get(data.tier)!
   const nextTier = tierMapping.get(data.tier !== 31 ? data.tier + 1 : 31)!
   const progress =
@@ -12,6 +14,8 @@ export const profileCard = async (data: User) => {
           ((data.rating - tier.rating) / (nextTier.rating - tier.rating)) * 100,
         )
 
+  const sizeConv = size / 100
+
   return await generate(
     <div
       style={{
@@ -19,7 +23,8 @@ export const profileCard = async (data: User) => {
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: '#15202b',
-        borderRadius: 10,
+        borderRadius: 10 * sizeConv,
+        fontSize: 14 * sizeConv,
       }}
     >
       <img
@@ -29,11 +34,13 @@ export const profileCard = async (data: User) => {
         }
         style={{
           flexShrink: 0,
-          width: 76,
-          height: 76,
-          margin: 12,
-          borderRadius: 12,
-          boxShadow: `0px 0px 10px 3px ${tier.color}`,
+          width: 76 * sizeConv,
+          height: 76 * sizeConv,
+          margin: 12 * sizeConv,
+          borderRadius: 12 * sizeConv,
+          boxShadow: `0px 0px ${10 * sizeConv}px ${3 * sizeConv}px ${
+            tier.color
+          }`,
         }}
       />
       <div
@@ -42,8 +49,8 @@ export const profileCard = async (data: User) => {
           flexGrow: 1,
           flexShrink: 1,
           flexDirection: 'column',
-          marginLeft: 3,
-          marginRight: 15,
+          marginLeft: 3 * sizeConv,
+          marginRight: 15 * sizeConv,
           color: 'white',
         }}
       >
@@ -52,7 +59,7 @@ export const profileCard = async (data: User) => {
           <div
             style={{
               display: 'flex',
-              marginLeft: 4,
+              marginLeft: 4 * sizeConv,
               ...(data.tier === 31
                 ? {
                     background:
@@ -70,12 +77,12 @@ export const profileCard = async (data: User) => {
             {tier.name}
           </div>
         </div>
-        <div style={{ display: 'flex', fontSize: 12 }}>
+        <div style={{ display: 'flex', fontSize: 12 * sizeConv }}>
           Rating:
           <div
             style={{
               display: 'flex',
-              marginLeft: 4,
+              marginLeft: 4 * sizeConv,
               ...(data.tier === 31
                 ? {
                     background:
@@ -93,13 +100,13 @@ export const profileCard = async (data: User) => {
             {data.rating}
           </div>
         </div>
-        <div style={{ display: 'flex', fontSize: 12 }}>
+        <div style={{ display: 'flex', fontSize: 12 * sizeConv }}>
           Solved:
           <div
             style={{
               display: 'flex',
               color: '#b8bcbf',
-              marginLeft: 4,
+              marginLeft: 4 * sizeConv,
             }}
           >
             {data.solvedCount}
@@ -108,7 +115,7 @@ export const profileCard = async (data: User) => {
         <div
           style={{
             display: 'flex',
-            fontSize: 12,
+            fontSize: 12 * sizeConv,
           }}
         >
           Class:
@@ -116,7 +123,7 @@ export const profileCard = async (data: User) => {
             style={{
               display: 'flex',
               color: classMapping.get(data.class)!,
-              marginLeft: 4,
+              marginLeft: 4 * sizeConv,
             }}
           >
             {data.class}
@@ -132,9 +139,9 @@ export const profileCard = async (data: User) => {
         <div
           style={{
             display: 'flex',
-            height: 10,
-            borderRadius: 5,
-            marginTop: 5,
+            height: 10 * sizeConv,
+            borderRadius: 5 * sizeConv,
+            marginTop: 5 * sizeConv,
             backgroundColor: '#0b131b',
             width: '100%',
           }}
@@ -142,7 +149,7 @@ export const profileCard = async (data: User) => {
           <div
             style={{
               display: 'flex',
-              borderRadius: 5,
+              borderRadius: 5 * sizeConv,
               width: `${progress}%`,
               background: tier.gradient,
             }}
@@ -150,5 +157,6 @@ export const profileCard = async (data: User) => {
         </div>
       </div>
     </div>,
+    size,
   )
 }

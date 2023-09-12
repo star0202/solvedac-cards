@@ -1,10 +1,7 @@
-import type { User } from '../types'
 import sha256 from 'crypto-js/sha256'
 import type { FastifyBaseLogger } from 'fastify'
 import { readFile, writeFile } from 'fs/promises'
 import { join } from 'path'
-
-type Data = User | undefined
 
 export default class CacheManager {
   private logger: FastifyBaseLogger
@@ -19,11 +16,11 @@ export default class CacheManager {
     await writeFile(join(__dirname, `../../cache/${hash}.svg`), svg)
   }
 
-  async generateCachedCard<T extends Data>(
-    data: T,
-    generate: (data: T) => Promise<string>,
+  async generateCachedCard<T>(
+    params: T,
+    generate: (params: T) => Promise<string>,
   ) {
-    const hash = sha256(JSON.stringify(data)).toString()
+    const hash = sha256(JSON.stringify(params)).toString()
 
     try {
       this.logger.info(`Using cache ${hash}`)
@@ -34,7 +31,7 @@ export default class CacheManager {
       )
       return svg
     } catch (e) {
-      const svg = await generate(data)
+      const svg = await generate(params)
       await this.cache(svg, hash)
 
       return svg

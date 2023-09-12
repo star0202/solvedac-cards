@@ -3,9 +3,9 @@ import { join } from 'path'
 import type { ReactNode } from 'react'
 import satori from 'satori'
 
-export const generate = async (element: ReactNode) => {
+export const generate = async (element: ReactNode, size: number) => {
   return await satori(element, {
-    height: 100,
+    height: size,
     fonts: [
       {
         name: 'Pretendard-SemiBold',

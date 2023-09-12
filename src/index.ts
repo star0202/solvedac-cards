@@ -34,18 +34,26 @@ app.get('/favicon.ico', async (_, reply) => {
 })
 
 app.get('/profile/:handle', async (request, reply) => {
-  if (!request.params) return reply.code(400).send('No User ID Provided')
+  const { handle } = request.params as { handle?: string }
+  const { size } = request.query as { size?: string }
 
-  const { handle } = request.params as { handle: string }
+  if (!handle) return reply.code(400).send('No User ID Provided')
 
   const data = await requestManager.getUser(handle)
 
   reply
     .code(200)
     .type('image/svg+xml')
-
     .header('Cache-Control', 'public, max-age=0, must-revalidate')
-    .send(await cacheManager.generateCachedCard(data, profileCard))
+    .send(
+      await cacheManager.generateCachedCard(
+        {
+          data,
+          size: parseInt(size ?? '100'),
+        },
+        profileCard,
+      ),
+    )
 })
 
 app.listen({ port: 8000, host: '0.0.0.0' }, (err) => {
