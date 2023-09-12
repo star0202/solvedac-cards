@@ -33,7 +33,7 @@ export const profileCard = async (data: User) => {
           height: 76,
           margin: 12,
           borderRadius: 12,
-          boxShadow: `0px 0px 5px 2px ${tier.color}`,
+          boxShadow: `0px 0px 10px 3px ${tier.color}`,
         }}
       />
       <div
