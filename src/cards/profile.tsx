@@ -38,7 +38,7 @@ export const profileCard = async (params: { data: User; size: number }) => {
           height: 76 * sizeConv,
           margin: 12 * sizeConv,
           borderRadius: 12 * sizeConv,
-          boxShadow: `0px 0px ${10 * sizeConv}px ${3 * sizeConv}px ${
+          boxShadow: `0px 0px ${5 * sizeConv}px ${2 * sizeConv}px ${
             tier.color
           }`,
         }}
