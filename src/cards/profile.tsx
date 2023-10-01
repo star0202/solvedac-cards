@@ -16,6 +16,8 @@ export const profileCard = async (params: { data: User; size: number }) => {
 
   const sizeConv = size / 100
 
+  console.log(progress)
+
   return await generate(
     <div
       style={{
@@ -150,7 +152,7 @@ export const profileCard = async (params: { data: User; size: number }) => {
             style={{
               display: 'flex',
               borderRadius: 5 * sizeConv,
-              width: `${progress}%`,
+              width: `${progress > 5 && progress < 95 ? progress : 0}%`,
               background: tier.gradient,
             }}
           />
