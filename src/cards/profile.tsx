@@ -13,10 +13,8 @@ export const profileCard = async (params: { data: User; size: number }) => {
       : Math.floor(
           ((data.rating - tier.rating) / (nextTier.rating - tier.rating)) * 100,
         )
-
+  const displayProgress = progress === 0 ? 0 : progress < 10 ? 10 : progress
   const sizeConv = size / 100
-
-  console.log(progress)
 
   return await generate(
     <div
@@ -152,7 +150,7 @@ export const profileCard = async (params: { data: User; size: number }) => {
             style={{
               display: 'flex',
               borderRadius: 5 * sizeConv,
-              width: `${progress > 5 && progress < 95 ? progress : 0}%`,
+              width: `${displayProgress}%`,
               background: tier.gradient,
             }}
           />
