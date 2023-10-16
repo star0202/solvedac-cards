@@ -12,7 +12,6 @@ export const profileCard = async (params: { data: User; size: number }) => {
       ? 100
       : ((data.rating - tier.rating) / (nextTier.rating - tier.rating)) * 100
 
-  console.log(progress)
   const displayProgress = progress === 0 ? 0 : progress < 10 ? 10 : progress
   const sizeConv = size / 100
 
