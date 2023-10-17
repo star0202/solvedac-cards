@@ -12,7 +12,7 @@ export const profileCard = async (params: { data: User; size: number }) => {
       ? 100
       : ((data.rating - tier.rating) / (nextTier.rating - tier.rating)) * 100
 
-  const displayProgress = progress === 0 ? 0 : progress < 10 ? 10 : progress
+  const displayProgress = progress === 0 ? 0 : Math.max(progress, 10)
   const sizeConv = size / 100
 
   return await generate(
