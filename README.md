@@ -13,7 +13,7 @@ Base URL: `https://solvedac-cards-starcea.paring.moe/`
   - `?size={int}`
     - Set card's height (default: 100px)
 
-  ![Example](https://solvedac-cards-starcea.paring.moe/profile/starcea?size=200)
+  ![Example](https://solvedac-cards-starcea.paring.moe/profile/starcea)
 
 ## Special Thanks
 
