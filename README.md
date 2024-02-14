@@ -11,7 +11,7 @@ Base URL: `https://solvedac-cards-starcea.paring.moe/`
   - Show solved.ac profile
 
   - `?size={int}`
-    - Set card's height (default: 100px)
+    - Set card's height (default: 100px, valid range: 100px ~ 500px)
 
   ![Example](https://solvedac-cards-starcea.paring.moe/profile/starcea)
 

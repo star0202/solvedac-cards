@@ -39,7 +39,14 @@ app.get('/profile/:handle', async (request, reply) => {
 
   if (!handle) return reply.code(400).send('No User ID Provided')
 
+  const _size = parseInt(size ?? '100')
+
+  if (_size < 100 || _size > 500)
+    return reply.code(400).send('Invalid Size, Must be between 100 and 500')
+
   const data = await requestManager.getUser(handle)
+
+  if (!data) return reply.code(404).send('User Not Found')
 
   reply
     .code(200)
@@ -49,7 +56,7 @@ app.get('/profile/:handle', async (request, reply) => {
       await cacheManager.generateCachedCard(
         {
           data,
-          size: parseInt(size ?? '100'),
+          size: _size,
         },
         profileCard,
       ),
