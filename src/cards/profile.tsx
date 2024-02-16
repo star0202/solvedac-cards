@@ -2,8 +2,12 @@ import { generate } from '.'
 import { classMapping, tierMapping } from '../constants'
 import type { User } from '../types'
 
-export const profileCard = async (params: { data: User; size: number }) => {
-  const { data, size } = params
+export const profileCard = async (params: {
+  data: User
+  size: number
+  color: 'dark' | 'light'
+}) => {
+  const { data, size, color } = params
 
   const tier = tierMapping.get(data.tier)!
   const nextTier = tierMapping.get(data.tier !== 31 ? data.tier + 1 : 31)!
@@ -14,6 +18,7 @@ export const profileCard = async (params: { data: User; size: number }) => {
 
   const displayProgress = progress === 0 ? 0 : Math.max(progress, 10)
   const sizeConv = size / 100
+  const isDark = color == 'dark'
 
   return await generate(
     <div
@@ -21,7 +26,7 @@ export const profileCard = async (params: { data: User; size: number }) => {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: '#15202b',
+        backgroundColor: isDark ? '#15202b' : '#f5f8fb',
         borderRadius: 10 * sizeConv,
         fontSize: 14 * sizeConv,
       }}
@@ -50,7 +55,7 @@ export const profileCard = async (params: { data: User; size: number }) => {
           flexDirection: 'column',
           marginLeft: 3 * sizeConv,
           marginRight: 15 * sizeConv,
-          color: 'white',
+          color: isDark ? 'white' : 'black',
         }}
       >
         <div style={{ display: 'flex' }}>
@@ -104,7 +109,7 @@ export const profileCard = async (params: { data: User; size: number }) => {
           <div
             style={{
               display: 'flex',
-              color: '#b8bcbf',
+              color: isDark ? '#b8bcbf' : '#35383a',
               marginLeft: 4 * sizeConv,
             }}
           >
@@ -141,7 +146,7 @@ export const profileCard = async (params: { data: User; size: number }) => {
             height: 10 * sizeConv,
             borderRadius: 5 * sizeConv,
             marginTop: 5 * sizeConv,
-            backgroundColor: '#0b131b',
+            backgroundColor: isDark ? '#0b131b' : '#cbd9e8',
             width: '100%',
           }}
         >
