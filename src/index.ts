@@ -35,11 +35,15 @@ app.get('/favicon.ico', async (_, reply) => {
 
 app.get('/profile/:handle', async (request, reply) => {
   const { handle } = request.params as { handle?: string }
-  const { size } = request.query as { size?: string }
+  const { size, color } = request.query as {
+    size?: string
+    color?: 'dark' | 'light'
+  }
 
   if (!handle) return reply.code(400).send('No User ID Provided')
 
   const _size = parseInt(size ?? '100')
+  const _color = color ? color : 'dark'
 
   if (_size < 100 || _size > 500)
     return reply.code(400).send('Invalid Size, Must be between 100 and 500')
@@ -57,6 +61,7 @@ app.get('/profile/:handle', async (request, reply) => {
         {
           data,
           size: _size,
+          color: _color,
         },
         profileCard,
       ),

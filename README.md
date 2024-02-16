@@ -12,6 +12,8 @@ Base URL: `https://solvedac-cards-starcea.paring.moe/`
 
   - `?size={int}`
     - Set card's height (default: 100px, valid range: 100px ~ 500px)
+  - `?color={dark|light}`
+    - Set card's color scheme (default: `dark`, valid value: `light`, `dark`)
 
 ## Examples (size: 200px)
 
