@@ -18,7 +18,7 @@ Base URL: `https://solvedac-cards-starcea.paring.moe/`
 ## Examples (size: 200px)
 
 ![Example (starcea)](https://solvedac-cards-starcea.paring.moe/profile/starcea?size=200)
-![Example (koosaga)](https://solvedac-cards-starcea.paring.moe/profile/koosaga?size=200)
+![Example (koosaga)](https://solvedac-cards-starcea.paring.moe/profile/koosaga?size=200&color=white)
 
 ## Special Thanks
 
