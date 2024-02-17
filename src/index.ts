@@ -43,7 +43,7 @@ app.get('/profile/:handle', async (request, reply) => {
   if (!handle) return reply.code(400).send('No User ID Provided')
 
   const _size = parseInt(size ?? '100')
-  const _color = color ? color : 'dark'
+  const _color = color === 'dark' || color === 'light' ? color : 'dark'
 
   if (_size < 100 || _size > 500)
     return reply.code(400).send('Invalid Size, Must be between 100 and 500')
