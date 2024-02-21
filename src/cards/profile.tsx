@@ -5,11 +5,10 @@ import type { User } from '../types'
 export const profileCard = async (params: {
   data: User
   size: number
-  color: 'dark' | 'light'
+  isDark: boolean
 }) => {
-  const { data, size, color } = params
+  const { data, size, isDark } = params
   const sizeConv = size / 100
-  const isDark = color == 'dark'
 
   const tier = tierMapping.get(data.tier)!
   const nextTier = tierMapping.get(data.tier !== 31 ? data.tier + 1 : 31)!
