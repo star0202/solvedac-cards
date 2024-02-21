@@ -8,6 +8,8 @@ export const profileCard = async (params: {
   color: 'dark' | 'light'
 }) => {
   const { data, size, color } = params
+  const sizeConv = size / 100
+  const isDark = color == 'dark'
 
   const tier = tierMapping.get(data.tier)!
   const nextTier = tierMapping.get(data.tier !== 31 ? data.tier + 1 : 31)!
@@ -17,8 +19,6 @@ export const profileCard = async (params: {
       : ((data.rating - tier.rating) / (nextTier.rating - tier.rating)) * 100
 
   const displayProgress = progress === 0 ? 0 : Math.max(progress, 10)
-  const sizeConv = size / 100
-  const isDark = color == 'dark'
 
   return await generate(
     <div
