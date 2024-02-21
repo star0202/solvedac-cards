@@ -42,7 +42,7 @@ app.get('/profile/:handle', async (request, reply) => {
 
   if (!handle) return reply.code(400).send('No User ID Provided')
 
-  if (color !== 'dark' && color !== 'light')
+  if (color && color !== 'dark' && color !== 'light')
     return reply.code(400).send('Invalid Color, Must be dark or light')
   const isDark = color === 'light' ? false : true
 
