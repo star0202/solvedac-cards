@@ -23,12 +23,13 @@ export default class CacheManager {
     const hash = sha256(JSON.stringify(params)).toString()
 
     try {
-      this.logger.info(`Using cache ${hash}`)
-
       const svg = await readFile(
         join(__dirname, `../../cache/${hash}.svg`),
         'utf-8',
       )
+
+      this.logger.info(`Using cache ${hash}`)
+
       return svg
     } catch (e) {
       const svg = await generate(params)
