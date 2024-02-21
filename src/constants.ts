@@ -5,6 +5,7 @@ export const tierMapping = new Map<number, Tier>([
     0,
     {
       color: '#2d2d2d',
+      detailedColor: '#2d2d2d',
       name: 'Unrated',
       rating: 0,
       gradient:
@@ -15,6 +16,7 @@ export const tierMapping = new Map<number, Tier>([
     1,
     {
       color: '#ad5600',
+      detailedColor: '#9d4900',
       name: 'Bronze V',
       rating: 30,
       gradient:
@@ -25,6 +27,7 @@ export const tierMapping = new Map<number, Tier>([
     2,
     {
       color: '#ad5600',
+      detailedColor: '#a54f00',
       name: 'Bronze IV',
       rating: 60,
       gradient:
@@ -35,6 +38,7 @@ export const tierMapping = new Map<number, Tier>([
     3,
     {
       color: '#ad5600',
+      detailedColor: '#ad5600',
       name: 'Bronze III',
       rating: 90,
       gradient:
@@ -45,6 +49,7 @@ export const tierMapping = new Map<number, Tier>([
     4,
     {
       color: '#ad5600',
+      detailedColor: '#b55d0a',
       name: 'Bronze II',
       rating: 120,
       gradient:
@@ -55,6 +60,7 @@ export const tierMapping = new Map<number, Tier>([
     5,
     {
       color: '#ad5600',
+      detailedColor: '#c67739',
       name: 'Bronze I',
       rating: 150,
       gradient:
@@ -65,6 +71,7 @@ export const tierMapping = new Map<number, Tier>([
     6,
     {
       color: '#435f7a',
+      detailedColor: '#38546e',
       name: 'Silver V',
       rating: 200,
       gradient:
@@ -75,6 +82,7 @@ export const tierMapping = new Map<number, Tier>([
     7,
     {
       color: '#435f7a',
+      detailedColor: '#3d5a74',
       name: 'Silver IV',
       rating: 300,
       gradient:
@@ -85,6 +93,7 @@ export const tierMapping = new Map<number, Tier>([
     8,
     {
       color: '#435f7a',
+      detailedColor: '#435f7a',
       name: 'Silver III',
       rating: 400,
       gradient:
@@ -95,6 +104,7 @@ export const tierMapping = new Map<number, Tier>([
     9,
     {
       color: '#435f7a',
+      detailedColor: '#496580',
       name: 'Silver II',
       rating: 500,
       gradient:
@@ -105,6 +115,7 @@ export const tierMapping = new Map<number, Tier>([
     10,
     {
       color: '#435f7a',
+      detailedColor: '#4e6a86',
       name: 'Silver I',
       rating: 650,
       gradient:
@@ -115,6 +126,7 @@ export const tierMapping = new Map<number, Tier>([
     11,
     {
       color: '#ec9a00',
+      detailedColor: '#d28500',
       name: 'Gold V',
       rating: 800,
       gradient:
@@ -125,6 +137,7 @@ export const tierMapping = new Map<number, Tier>([
     12,
     {
       color: '#ec9a00',
+      detailedColor: '#df8f00',
       name: 'Gold IV',
       rating: 950,
       gradient:
@@ -135,6 +148,7 @@ export const tierMapping = new Map<number, Tier>([
     13,
     {
       color: '#ec9a00',
+      detailedColor: '#ec9a00',
       name: 'Gold III',
       rating: 1100,
       gradient:
@@ -145,6 +159,7 @@ export const tierMapping = new Map<number, Tier>([
     14,
     {
       color: '#ec9a00',
+      detailedColor: '#f9a518',
       name: 'Gold II',
       rating: 1250,
       gradient:
@@ -155,6 +170,7 @@ export const tierMapping = new Map<number, Tier>([
     15,
     {
       color: '#ec9a00',
+      detailedColor: '#ffb028',
       name: 'Gold I',
       rating: 1400,
       gradient:
@@ -165,6 +181,7 @@ export const tierMapping = new Map<number, Tier>([
     16,
     {
       color: '#27e2a4',
+      detailedColor: '#00c78b',
       name: 'Platinum V',
       rating: 1600,
       gradient:
@@ -175,6 +192,7 @@ export const tierMapping = new Map<number, Tier>([
     17,
     {
       color: '#27e2a4',
+      detailedColor: '#00d497',
       name: 'Platinum IV',
       rating: 1750,
       gradient:
@@ -185,6 +203,7 @@ export const tierMapping = new Map<number, Tier>([
     18,
     {
       color: '#27e2a4',
+      detailedColor: '#27e2a4',
       name: 'Platinum III',
       rating: 1900,
       gradient:
@@ -195,6 +214,7 @@ export const tierMapping = new Map<number, Tier>([
     19,
     {
       color: '#27e2a4',
+      detailedColor: '#3ef0b1',
       name: 'Platinum II',
       rating: 2000,
       gradient:
@@ -205,6 +225,7 @@ export const tierMapping = new Map<number, Tier>([
     20,
     {
       color: '#27e2a4',
+      detailedColor: '#51fdbd',
       name: 'Platinum I',
       rating: 2100,
       gradient:
@@ -215,6 +236,7 @@ export const tierMapping = new Map<number, Tier>([
     21,
     {
       color: '#00b4fc',
+      detailedColor: '#009ee5',
       name: 'Diamond V',
       rating: 2200,
       gradient:
@@ -225,6 +247,7 @@ export const tierMapping = new Map<number, Tier>([
     22,
     {
       color: '#00b4fc',
+      detailedColor: '#00a9f0',
       name: 'Diamond IV',
       rating: 2300,
       gradient:
@@ -235,6 +258,7 @@ export const tierMapping = new Map<number, Tier>([
     23,
     {
       color: '#00b4fc',
+      detailedColor: '#00b4fc',
       name: 'Diamond III',
       rating: 2400,
       gradient:
@@ -245,6 +269,7 @@ export const tierMapping = new Map<number, Tier>([
     24,
     {
       color: '#00b4fc',
+      detailedColor: '#2bbfff',
       name: 'Diamond II',
       rating: 2500,
       gradient:
@@ -255,6 +280,7 @@ export const tierMapping = new Map<number, Tier>([
     25,
     {
       color: '#00b4fc',
+      detailedColor: '#41caff',
       name: 'Diamond I',
       rating: 2600,
       gradient:
@@ -265,6 +291,7 @@ export const tierMapping = new Map<number, Tier>([
     26,
     {
       color: '#ff0062',
+      detailedColor: '#e0004c',
       name: 'Ruby V',
       rating: 2700,
       gradient: 'linear-gradient(to right, #ff0062 0%, #ff0000 100%)',
@@ -274,6 +301,7 @@ export const tierMapping = new Map<number, Tier>([
     27,
     {
       color: '#ff0062',
+      detailedColor: '#ea0053',
       name: 'Ruby IV',
       rating: 2800,
       gradient: 'linear-gradient(to right, #ff0062 0%, #ff0000 100%)',
@@ -283,6 +311,7 @@ export const tierMapping = new Map<number, Tier>([
     28,
     {
       color: '#ff0062',
+      detailedColor: '#f5005a',
       name: 'Ruby III',
       rating: 2850,
       gradient: 'linear-gradient(to right, #ff0062 0%, #ff0000 100%)',
@@ -292,6 +321,7 @@ export const tierMapping = new Map<number, Tier>([
     29,
     {
       color: '#ff0062',
+      detailedColor: '#ff0062',
       name: 'Ruby II',
       rating: 2900,
       gradient: 'linear-gradient(to right, #ff0062 0%, #ff0000 100%)',
@@ -301,6 +331,7 @@ export const tierMapping = new Map<number, Tier>([
     30,
     {
       color: '#ff0062',
+      detailedColor: '#ff3071',
       name: 'Ruby I',
       rating: 2950,
       gradient: 'linear-gradient(to right, #ff0062 0%, #ff0000 100%)',
@@ -310,6 +341,7 @@ export const tierMapping = new Map<number, Tier>([
     31,
     {
       color: '#b300e0',
+      detailedColor: '#b300e0',
       name: 'Master',
       rating: 3000,
       gradient:

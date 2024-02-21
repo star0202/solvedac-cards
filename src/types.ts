@@ -26,8 +26,17 @@ export type User = {
 }
 
 export type Tier = {
-  color: string
+  color: `#${string}`
+  detailedColor: `#${string}`
   name: string
   rating: number
   gradient: string
+}
+
+export type ProblemStat = {
+  level: number
+  solved: number
+  tried: number
+  partial: number
+  total: number
 }

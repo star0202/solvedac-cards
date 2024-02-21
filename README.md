@@ -8,17 +8,27 @@ Base URL: `https://solvedac-cards-starcea.paring.moe/`
 
 - `/profile/:handle`
 
-  - Show solved.ac profile
+  Show solved.ac profile
 
   - `?size={int}`
     - Set card's height (default: 100px, valid range: 100px ~ 500px)
   - `?color={dark|light}`
     - Set card's color scheme (default: `dark`, valid value: `light`, `dark`)
 
-## Examples (size: 200px)
+![Example (starcea)](https://solvedac-cards-starcea.paring.moe/profile/starcea)
+![Example (koosaga)](https://solvedac-cards-starcea.paring.moe/profile/koosaga?color=light)
 
-![Example (starcea)](https://solvedac-cards-starcea.paring.moe/profile/starcea?size=200)
-![Example (koosaga)](https://solvedac-cards-starcea.paring.moe/profile/koosaga?size=200&color=light)
+- `/problems/:handle`
+
+  Show tier distribution of solved problems
+
+  - `?size={int}`
+    - Set card's height (default: 200px, valid range: 200px ~ 1000px)
+  - `?color={dark|light}`
+    - Set card's color scheme (default: `dark`, valid value: `light`, `dark`)
+
+![Example (starcea)](https://solvedac-cards-starcea.paring.moe/problems/starcea)
+![Example (koosaga)](https://solvedac-cards-starcea.paring.moe/problems/koosaga?color=light)
 
 ## Special Thanks
 
