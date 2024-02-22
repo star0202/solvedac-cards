@@ -3,6 +3,8 @@ import type { FastifyBaseLogger } from 'fastify'
 import { readFile, writeFile } from 'fs/promises'
 import { join } from 'path'
 
+const DEBUG = 0 //+ 1 // debug
+
 export default class CacheManager {
   private logger: FastifyBaseLogger
 
@@ -23,7 +25,7 @@ export default class CacheManager {
     const hash = sha256(JSON.stringify(params)).toString()
 
     try {
-      // throw new Error('Cache disabled') // debug
+      if (DEBUG) throw new Error()
 
       const svg = await readFile(
         join(__dirname, `../../cache/${hash}.svg`),
@@ -35,6 +37,12 @@ export default class CacheManager {
       return svg
     } catch (e) {
       const svg = await generate(params)
+
+      if (DEBUG) {
+        this.logger.info(`Debug mode, skip caching ${hash}`)
+        return svg
+      }
+
       await this.cache(svg, hash)
 
       return svg
