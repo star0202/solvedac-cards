@@ -46,7 +46,7 @@ Base URL: `https://solvedac-cards-starcea.paring.moe/`
 ![Example (starcea)](https://solvedac-cards-starcea.paring.moe/tags/starcea)
 ![Example (koosaga)](https://solvedac-cards-starcea.paring.moe/tags/koosaga?color=light)
 ![Example (starcea, top)](https://solvedac-cards-starcea.paring.moe/tags/starcea?top=true)
-![Example (koosaga, text)](https://solvedac-cards-starcea.paring.moe/tags/koosaga?text=true)
+![Example (koosaga, text)](https://solvedac-cards-starcea.paring.moe/tags/koosaga?color=light&text=true)
 
 ## Special Thanks
 
