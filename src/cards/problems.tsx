@@ -60,8 +60,8 @@ export const problemCard = async (params: {
           r={20 * sizeConv}
           cx={80 * sizeConv}
           cy={80 * sizeConv}
-          stroke={tierMapping.get(user.tier)!.color}
-          strokeWidth={2 * sizeConv}
+          stroke={tierMapping.get(user.tier)!.detailedColor}
+          strokeWidth={8 * sizeConv}
         />
         <clipPath id="clip">
           <circle r={20 * sizeConv} cx={80 * sizeConv} cy={80 * sizeConv} />
