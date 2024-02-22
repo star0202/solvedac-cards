@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "dev": "ts-node --swc src",
+    "dev": "NODE_ENV=development ts-node --swc src",
     "lint": "eslint --ignore-path .gitignore",
     "start": "node dist"
   },
