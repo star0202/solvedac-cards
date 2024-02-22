@@ -1,5 +1,6 @@
 import { problemCard } from './cards/problems'
 import { profileCard } from './cards/profile'
+import { tagCard } from './cards/tags'
 import CacheManager from './structures/Cache'
 import RequestManager from './structures/Request'
 import fastify from 'fastify'
@@ -106,6 +107,45 @@ app.get('/problems/:handle', async (request, reply) => {
           isDark,
         },
         problemCard,
+      ),
+    )
+})
+
+app.get('/tags/:handle', async (request, reply) => {
+  const { handle } = request.params as { handle?: string }
+  const { size, color } = request.query as {
+    size?: string
+    color?: string
+  }
+
+  if (!handle) return reply.code(400).send('No User ID Provided')
+
+  if (color && color !== 'dark' && color !== 'light')
+    return reply.code(400).send('Invalid Color, Must be dark or light')
+  const isDark = color === 'light' ? false : true
+
+  const _size = parseInt(size ?? '200')
+  if (_size < 200 || _size > 1000)
+    return reply.code(400).send('Invalid Size, Must be between 200 and 1000')
+
+  const user = await requestManager.getUser(handle)
+  const stats = await requestManager.getTagRatingStats(handle)
+
+  if (!user || !stats) return reply.code(404).send('User Not Found')
+
+  reply
+    .code(200)
+    .type('image/svg+xml')
+    .header('Cache-Control', 'public, max-age=0, must-revalidate')
+    .send(
+      await cacheManager.generateCachedCard(
+        {
+          user,
+          stats,
+          size: _size,
+          isDark,
+        },
+        tagCard,
       ),
     )
 })

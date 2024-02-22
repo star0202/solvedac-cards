@@ -40,3 +40,32 @@ export type ProblemStat = {
   partial: number
   total: number
 }
+
+type Tag = {
+  key: string
+  isMeta: boolean
+  bojTagId: number
+  problemCount: number
+  displayNames: {
+    language: Language
+    name: string
+    short: string
+  }[]
+  aliases: Alias[]
+}
+
+type Language = 'ko' | 'en' | 'ja'
+
+type Alias = {
+  alias: string
+}
+
+export type TagRatingStat = {
+  tag: Tag
+  solvedCount: number
+  rating: number
+  ratingByProblemsSum: number
+  ratingByClass: number
+  ratingBySolvedCount: number
+  ratingProblemsCutoff: number
+}
