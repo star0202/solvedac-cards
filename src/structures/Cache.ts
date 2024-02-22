@@ -23,6 +23,8 @@ export default class CacheManager {
     const hash = sha256(JSON.stringify(params)).toString()
 
     try {
+      // throw new Error('Cache disabled') // debug
+
       const svg = await readFile(
         join(__dirname, `../../cache/${hash}.svg`),
         'utf-8',
