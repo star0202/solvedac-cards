@@ -3,7 +3,7 @@ import type { FastifyBaseLogger } from 'fastify'
 import { readFile, writeFile } from 'fs/promises'
 import { join } from 'path'
 
-const DEBUG = 0 //+ 1 // debug
+const DEBUG = 0 + 1 // debug
 
 export default class CacheManager {
   private logger: FastifyBaseLogger

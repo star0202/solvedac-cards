@@ -71,6 +71,29 @@ export const tagCard = async (params: {
               strokeWidth={2 * sizeConv}
             />
           </g>
+
+          <circle
+            r={20 * sizeConv}
+            cx={85 * sizeConv}
+            cy={85 * sizeConv}
+            stroke={tierMapping.get(user.tier)!.detailedColor}
+            strokeWidth={4 * sizeConv}
+          />
+          <clipPath id="clip">
+            <circle r={20 * sizeConv} cx={85 * sizeConv} cy={85 * sizeConv} />
+          </clipPath>
+          <image
+            href={
+              (user.profileImageUrl ||
+                'https://static.solved.ac/misc/360x360/default_profile.png') +
+              `?timestamp=${Date.now()}` // prevent image caching in satori. issue: https://github.com/vercel/satori/issues/592
+            }
+            clipPath="url(#clip)"
+            height={40 * sizeConv}
+            width={40 * sizeConv}
+            x={65 * sizeConv}
+            y={65 * sizeConv}
+          />
         </svg>
       </div>
     </div>,
