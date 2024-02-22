@@ -25,9 +25,11 @@ export type User = {
   rank: number
 }
 
+export type HexColorString = `#${string}`
+
 export type Tier = {
-  color: `#${string}`
-  detailedColor: `#${string}`
+  color: HexColorString
+  detailedColor: HexColorString
   name: string
   rating: number
   gradient: string
