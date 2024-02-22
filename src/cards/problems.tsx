@@ -44,8 +44,8 @@ export const problemCard = async (params: {
       >
         <svg
           style={{
-            width: 160 * sizeConv,
-            height: 160 * sizeConv,
+            width: 170 * sizeConv,
+            height: 170 * sizeConv,
           }}
         >
           <g transform={`translate(${85 * sizeConv},${85 * sizeConv})`}>
