@@ -19,24 +19,49 @@ export const tagCard = async (params: {
   stats: TagRatingStat[]
   size: number
   isDark: boolean
+  top: boolean
+  text: boolean
 }) => {
-  const { user, stats, size, isDark } = params
+  const { user, stats, size, isDark, top, text: textNotation } = params
   const sizeConv = size / 200
-  const { base, mantle } = themeMapping.get(isDark)!
+  const { base, mantle, text } = themeMapping.get(isDark)!
 
-  const _stats = stats
-    .filter((d) => TAGS.includes(d.tag.key))
-    .sort((a, b) => TAGS.indexOf(a.tag.key) - TAGS.indexOf(b.tag.key))
+  const _stats = top
+    ? stats.sort((a, b) => b.rating - a.rating).slice(0, 8)
+    : stats
+        .filter((d) => TAGS.includes(d.tag.key))
+        .sort((a, b) => TAGS.indexOf(a.tag.key) - TAGS.indexOf(b.tag.key))
 
+  const tags = top ? _stats.map((d) => d.tag.key) : TAGS
   const max = Math.max(..._stats.map((d) => d.rating))
 
   const area = d3
     .areaRadial<TagRatingStat>()
     .curve(d3.curveLinearClosed)
-    .angle((d) => TAGS.indexOf(d.tag.key) * ((2 * Math.PI) / TAGS.length))
-    .radius((d) => d.rating * (75 / max) * sizeConv)
+    .angle((d) => tags.indexOf(d.tag.key) * ((2 * Math.PI) / tags.length))
+    .radius((d) => d.rating * (70 / max) * sizeConv)
 
-  const arcs = area(_stats)
+  const areaArcs = area(_stats)
+
+  const toPoint = (name: string, radius: number) => {
+    const coord = d3.pointRadial(
+      tags.indexOf(name) * ((2 * Math.PI) / tags.length),
+      radius,
+    )
+
+    return {
+      name,
+      x: coord[0],
+      y: coord[1],
+    }
+  }
+
+  const points = _stats.map((d) =>
+    toPoint(d.tag.key, d.rating * (70 / max) * sizeConv),
+  )
+  const textPoints = textNotation
+    ? points.map((d) => toPoint(d.name, 80 * sizeConv))
+    : []
 
   return await generate(
     <div
@@ -66,12 +91,38 @@ export const tagCard = async (params: {
         >
           <g transform={`translate(${85 * sizeConv},${85 * sizeConv})`}>
             <path
-              d={arcs ?? undefined}
+              d={areaArcs!}
               stroke={tierMapping.get(user.tier)!.detailedColor}
               strokeWidth={2 * sizeConv}
+              fill={tierMapping.get(user.tier)!.detailedColor}
+              fillOpacity={0.5}
             />
+            {points.map((point, i) => (
+              <g key={i}>
+                <circle
+                  r={3 * sizeConv}
+                  cx={point.x}
+                  cy={point.y}
+                  fill={tierMapping.get(user.tier)!.detailedColor}
+                />
+              </g>
+            ))}
+            {textPoints.map((point, i) => (
+              <div
+                key={i}
+                style={{
+                  position: 'absolute',
+                  left: point.x + 85 * sizeConv,
+                  top: point.y + 85 * sizeConv,
+                  color: text,
+                  fontSize: 10 * sizeConv,
+                  transform: 'translate(-50%, -50%)',
+                }}
+              >
+                {point.name}
+              </div>
+            ))}
           </g>
-
           <circle
             r={20 * sizeConv}
             cx={85 * sizeConv}

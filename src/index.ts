@@ -113,9 +113,11 @@ app.get('/problems/:handle', async (request, reply) => {
 
 app.get('/tags/:handle', async (request, reply) => {
   const { handle } = request.params as { handle?: string }
-  const { size, color } = request.query as {
+  const { size, color, top, text } = request.query as {
     size?: string
     color?: string
+    top?: boolean
+    text?: boolean
   }
 
   if (!handle) return reply.code(400).send('No User ID Provided')
@@ -144,6 +146,8 @@ app.get('/tags/:handle', async (request, reply) => {
           stats,
           size: _size,
           isDark,
+          top: !!top,
+          text: !!text,
         },
         tagCard,
       ),
