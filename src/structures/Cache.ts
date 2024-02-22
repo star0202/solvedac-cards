@@ -37,12 +37,6 @@ export default class CacheManager {
       return svg
     } catch (e) {
       const svg = await generate(params)
-
-      if (DEBUG) {
-        this.logger.info(`Debug mode, skip caching ${hash}`)
-        return svg
-      }
-
       await this.cache(svg, hash)
 
       return svg
