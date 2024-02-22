@@ -34,7 +34,7 @@ export const tagCard = async (params: {
     .areaRadial<TagRatingStat>()
     .curve(d3.curveLinearClosed)
     .angle((d) => TAGS.indexOf(d.tag.key) * ((2 * Math.PI) / TAGS.length))
-    .radius((d) => d.rating * (70 / max) * sizeConv)
+    .radius((d) => d.rating * (75 / max) * sizeConv)
 
   const arcs = area(_stats)
 
@@ -51,20 +51,20 @@ export const tagCard = async (params: {
       <div
         style={{
           display: 'flex',
-          width: 160 * sizeConv,
-          height: 160 * sizeConv,
-          margin: 20 * sizeConv,
+          width: 170 * sizeConv,
+          height: 170 * sizeConv,
+          margin: 15 * sizeConv,
           backgroundColor: mantle,
           borderRadius: 20 * sizeConv,
         }}
       >
         <svg
           style={{
-            width: 160 * sizeConv,
-            height: 160 * sizeConv,
+            width: 170 * sizeConv,
+            height: 170 * sizeConv,
           }}
         >
-          <g transform={`translate(${80 * sizeConv},${80 * sizeConv})`}>
+          <g transform={`translate(${85 * sizeConv},${85 * sizeConv})`}>
             <path
               d={arcs ?? undefined}
               stroke={tierMapping.get(user.tier)!.detailedColor}
