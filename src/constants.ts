@@ -1,4 +1,4 @@
-import type { HexColorString, Tier } from './types'
+import type { HexColorString, Theme, Tier } from './types'
 
 export const tierMapping = new Map<number, Tier>([
   [
@@ -362,4 +362,28 @@ export const classMapping = new Map<number, HexColorString>([
   [8, '#ff6700'],
   [9, '#ef165e'],
   [10, '#8f1ae2'],
+])
+
+export const themeMapping = new Map<boolean, Theme>([
+  // isDark -> Theme
+  [
+    false,
+    {
+      base: '#ffffff',
+      crust: '#0b131b',
+      mantle: '#f7f8f9',
+      text: '#000000',
+      sub: '#8a8f95',
+    },
+  ],
+  [
+    true,
+    {
+      base: '#15202b',
+      crust: '#040609',
+      mantle: '#0b131b',
+      text: '#ffffff',
+      sub: '#b8bcbf',
+    },
+  ],
 ])

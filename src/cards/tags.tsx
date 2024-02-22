@@ -1,5 +1,5 @@
 import { generate } from '.'
-import { tierMapping } from '../constants'
+import { themeMapping, tierMapping } from '../constants'
 import type { TagRatingStat, User } from '../types'
 import * as d3 from 'd3'
 
@@ -22,6 +22,7 @@ export const tagCard = async (params: {
 }) => {
   const { user, stats, size, isDark } = params
   const sizeConv = size / 200
+  const { base, mantle } = themeMapping.get(isDark)!
 
   const _stats = stats
     .filter((d) => TAGS.includes(d.tag.key))
@@ -33,7 +34,7 @@ export const tagCard = async (params: {
     .areaRadial<TagRatingStat>()
     .curve(d3.curveLinearClosed)
     .angle((d) => TAGS.indexOf(d.tag.key) * ((2 * Math.PI) / TAGS.length))
-    .radius((d) => d.rating * (80 / max) * sizeConv)
+    .radius((d) => d.rating * (70 / max) * sizeConv)
 
   const arcs = area(_stats)
 
@@ -42,26 +43,36 @@ export const tagCard = async (params: {
       style={{
         display: 'flex',
         alignItems: 'center',
-        backgroundColor: isDark ? '#15202b' : '#f5f8fb',
+        backgroundColor: base,
         borderRadius: 20 * sizeConv,
         fontSize: 28 * sizeConv,
       }}
     >
-      <svg
+      <div
         style={{
+          display: 'flex',
           width: 160 * sizeConv,
           height: 160 * sizeConv,
           margin: 20 * sizeConv,
+          backgroundColor: mantle,
+          borderRadius: 20 * sizeConv,
         }}
       >
-        <g transform={`translate(${80 * sizeConv},${80 * sizeConv})`}>
-          <path
-            d={arcs ?? undefined}
-            stroke={tierMapping.get(user.tier)!.detailedColor}
-            strokeWidth={2 * sizeConv}
-          />
-        </g>
-      </svg>
+        <svg
+          style={{
+            width: 160 * sizeConv,
+            height: 160 * sizeConv,
+          }}
+        >
+          <g transform={`translate(${80 * sizeConv},${80 * sizeConv})`}>
+            <path
+              d={arcs ?? undefined}
+              stroke={tierMapping.get(user.tier)!.detailedColor}
+              strokeWidth={2 * sizeConv}
+            />
+          </g>
+        </svg>
+      </div>
     </div>,
     size,
   )

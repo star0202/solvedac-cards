@@ -71,3 +71,11 @@ export type TagRatingStat = {
   ratingBySolvedCount: number
   ratingProblemsCutoff: number
 }
+
+export type Theme = {
+  base: HexColorString
+  crust: HexColorString
+  mantle: HexColorString
+  text: HexColorString
+  sub: HexColorString
+}

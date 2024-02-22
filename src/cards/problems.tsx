@@ -1,5 +1,5 @@
 import { generate } from '.'
-import { tierMapping } from '../constants'
+import { themeMapping, tierMapping } from '../constants'
 import type { ProblemStat, User } from '../types'
 import * as d3 from 'd3'
 
@@ -11,6 +11,7 @@ export const problemCard = async (params: {
 }) => {
   const { user, stats, size, isDark } = params
   const sizeConv = size / 200
+  const { base } = themeMapping.get(isDark)!
 
   const pie = d3
     .pie<ProblemStat>()
@@ -26,7 +27,7 @@ export const problemCard = async (params: {
       style={{
         display: 'flex',
         alignItems: 'center',
-        backgroundColor: isDark ? '#15202b' : '#f5f8fb',
+        backgroundColor: base,
         borderRadius: 20 * sizeConv,
         fontSize: 28 * sizeConv,
       }}
