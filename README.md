@@ -30,6 +30,18 @@ Base URL: `https://solvedac-cards-starcea.paring.moe/`
 ![Example (starcea)](https://solvedac-cards-starcea.paring.moe/problems/starcea)
 ![Example (koosaga)](https://solvedac-cards-starcea.paring.moe/problems/koosaga?color=light)
 
+- `/tags/:handle`
+
+  Show tag tier graph
+
+  - `?size={int}`
+    - Set card's height (default: 200px, valid range: 200px ~ 1000px)
+  - `?color={dark|light}`
+    - Set card's color scheme (default: `dark`, valid value: `light`, `dark`)
+
+![Example (starcea)](https://solvedac-cards-starcea.paring.moe/tags/starcea)
+![Example (koosaga)](https://solvedac-cards-starcea.paring.moe/tags/koosaga?color=light)
+
 ## Special Thanks
 
 [@pikokr](https://github.com/pikokr) - Server & Domain
