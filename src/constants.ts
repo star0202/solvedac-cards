@@ -350,7 +350,7 @@ export const tierMapping = new Map<number, Tier>([
   ],
 ])
 
-export const classMapping = new Map<number, string>([
+export const classMapping = new Map<number, `#${string}`>([
   [0, '#2d2d2d'],
   [1, '#1d7edd'],
   [2, '#1ab3e2'],
