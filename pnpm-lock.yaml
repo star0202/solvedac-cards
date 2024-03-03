@@ -30,7 +30,7 @@ devDependencies:
     version: 4.2.0(prettier@3.0.3)
   '@types/crypto-js':
     specifier: ^4.1.2
-    version: 4.1.2
+    version: 4.2.2
   '@types/d3':
     specifier: ^6.7.8
     version: 6.7.8
@@ -491,8 +491,8 @@ packages:
     resolution: {integrity: sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==}
     dev: true
 
-  /@types/crypto-js@4.1.2:
-    resolution: {integrity: sha512-t33RNmTu5ufG/sorROIafiCVJMx3jz95bXUMoPAZcUD14fxMXnuTzqzXZoxpR0tNx2xpw11Dlmem9vGCsrSOfA==}
+  /@types/crypto-js@4.2.2:
+    resolution: {integrity: sha512-sDOLlVbHhXpAUAL0YHDUUwDZf3iN4Bwi4W6a0W0b+QcAezUbRtH4FVb+9J4h+XFPW7l/gQ9F8qC7P+Ec4k8QVQ==}
     dev: true
 
   /@types/d3-array@2.12.7:
