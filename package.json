@@ -34,7 +34,7 @@
     "axios": "^1.5.0",
     "crypto-js": "^4.1.1",
     "d3": "^6.7.0",
-    "fastify": "^4.23.0",
+    "fastify": "^5.0.0",
     "satori": "^0.10.4"
   },
   "packageManager": "pnpm@8.7.4"
